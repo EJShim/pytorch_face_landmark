@@ -8,7 +8,7 @@ import cv2
 import numpy as np
 import onnx
 import vision.utils.box_utils_numpy as box_utils
-from caffe2.python.onnx import backend
+# from caffe2.python.onnx import backend
 
 # onnx runtime
 import onnxruntime as ort
@@ -67,10 +67,10 @@ label_path = "models/voc-model-labels.txt"
 onnx_path = "models/onnx/version-RFB-320.onnx"
 class_names = [name.strip() for name in open(label_path).readlines()]
 
-predictor = onnx.load(onnx_path)
-onnx.checker.check_model(predictor)
-onnx.helper.printable_graph(predictor.graph)
-predictor = backend.prepare(predictor, device="CPU")  # default CPU
+# predictor = onnx.load(onnx_path)
+# onnx.checker.check_model(predictor)
+# onnx.helper.printable_graph(predictor.graph)
+# predictor = backend.prepare(predictor, device="CPU")  # default CPU
 
 ort_session = ort.InferenceSession(onnx_path)
 input_name = ort_session.get_inputs()[0].name
